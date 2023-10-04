@@ -1,7 +1,12 @@
 from sqlalchemy import create_engine, text
+import os
 
-db_string = "mysql+pymysql://5902kwaucaunv2yytkmc:pscale_pw_EdReooQDohKClpY0L2dOypCEny9uffXmhZTQt4EA4fw@gcp.connect.psdb.cloud/diegocarrers?charset=utf8mb4"
 
+#my_secret = os.environ['DB_CONNECTION_STRING']
+db_string = os.environ['DB_CONNECTION_STRING']
+
+
+#db_string = "mysql+pymysql://j03pn5j4nqo06p0h0k5v:pscale_pw_OgGGAMvsHVpuEZY03fts0kDSUIMqRkVHtHEc2LhrvSb@gcp.connect.psdb.cloud/diegocarrers?charset=utf8mb4"
 engine = create_engine(db_string,
                       connect_args={
                         "ssl":{"ssl_ca":""}})
