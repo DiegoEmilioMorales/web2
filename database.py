@@ -3,10 +3,10 @@ import os
 
 
 #my_secret = os.environ['DB_CONNECTION_STRING']
-db_string = os.environ['DB_CONNECTION_STRING']
+#db_string = os.environ['DB_CONNECTION_STRING']
 
 
-#db_string = "mysql+pymysql://j03pn5j4nqo06p0h0k5v:pscale_pw_OgGGAMvsHVpuEZY03fts0kDSUIMqRkVHtHEc2LhrvSb@gcp.connect.psdb.cloud/diegocarrers?charset=utf8mb4"
+db_string = "mysql+pymysql://z8tvrl4c7koosnufyxbv:pscale_pw_o70qIfgTHtz5F14jtAYUYf5QLhLqyWZIaE2bebRYJGF@gcp-us-central1.connect.psdb.cloud/diegocarrers?charset=utf8mb4"
 engine = create_engine(db_string,
                       connect_args={
                         "ssl":{"ssl_ca":""}})
@@ -18,6 +18,16 @@ def load_jobs_fromdb():
     for row in result.all():
       jobs_db.append(dict(row._asdict()))
   return jobs_db
+
+def load_job_fromdb(id):
+  with engine.connect() as conn:
+    result = conn.execute(
+      text(f"SELECT * FROM jobs WHERE id = {id}"))
+    rows = result.all()
+    if len(rows) == 0:
+      return None
+    else:
+      return dict(rows[0]._asdict())
 
 
 '''

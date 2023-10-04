@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{job.title}} - Diego Carrers</title>
+    {%include 'bootstramp.html'%}
+
+  </head>
+  <body>
+    {%include 'nav.html' %}
+    <h3 class="mt-4 mb-4"> Title </h3>
+    <p>{{job.title}}</p>
+    <h3> Location </h3>
+    <p>{{job.location}}</p>
+    <h3> Salary </h3>
+    <p>{{job.currency}}{{job.salary}}</p>
+    <h3> Responsabilities </h3>
+    <p>{{job.responsabilities}}</p>
+    <h3> Requirement </h3>
+    <p>{{job.requirements}}</p>
+    {%include 'footer.html' %}
+  </body>
+</html>
