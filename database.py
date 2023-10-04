@@ -1,11 +1,11 @@
 from sqlalchemy import create_engine, text
 
-db_string = "mysql+pymysql://3iac7jtujrmgho3npd75:pscale_pw_gtBbLIRhBSLOin01Dl7UYJ646TmeelnRjkoZDR9sDuo@gcp.connect.psdb.cloud/diegocarrers?charset=utf8mb4"
+db_string = "mysql+pymysql://62fz926rraeos0oezqlp:pscale_pw_aUHq1daVqYsG7TFUq4USGshr0R2abOyKYyJV8glyEUF@gcp.connect.psdb.cloud/diegocarrers?charset=utf8mb4"
 
 engine = create_engine(db_string,
                       connect_args={
                         "ssl":{"ssl_ca":""}})
-
+'''
 with engine.connect() as conn:
   result = conn.execute(text("select * from jobs"))
 
@@ -16,7 +16,6 @@ with engine.connect() as conn:
 
   print(result_dicts)
 
-  '''
     print(type(result))
     result_all = result.all()
     #result_li = result.all()
