@@ -1,10 +1,20 @@
 from sqlalchemy import create_engine, text
 
-db_string = "mysql+pymysql://62fz926rraeos0oezqlp:pscale_pw_aUHq1daVqYsG7TFUq4USGshr0R2abOyKYyJV8glyEUF@gcp.connect.psdb.cloud/diegocarrers?charset=utf8mb4"
+db_string = "mysql+pymysql://5902kwaucaunv2yytkmc:pscale_pw_EdReooQDohKClpY0L2dOypCEny9uffXmhZTQt4EA4fw@gcp.connect.psdb.cloud/diegocarrers?charset=utf8mb4"
 
 engine = create_engine(db_string,
                       connect_args={
                         "ssl":{"ssl_ca":""}})
+
+def load_jobs_fromdb():
+  with engine.connect() as conn:
+    result = conn.execute(text("select * from jobs"))
+    jobs_db = []
+    for row in result.all():
+      jobs_db.append(dict(row._asdict()))
+  return jobs_db
+
+
 '''
 with engine.connect() as conn:
   result = conn.execute(text("select * from jobs"))
